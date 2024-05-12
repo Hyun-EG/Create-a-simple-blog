@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import "./App.css";
+import React from "react";
 
 function App() {
   let [cloth, setCloth] = useState([
-    "남자 코트 추천",
     "유아 코트 추천",
+    "남자 코트 추천",
     "최신 유행 코트",
   ]);
   let [like, setLike] = useState([0, 0, 0]);
@@ -30,7 +31,7 @@ function App() {
       </button>
       <button
         onClick={() => {
-          setCloth(["남자 코트 추천", "유아 코트 추천", "최신 유행 코트"]);
+          setCloth(["유아 코트 추천", "남자 코트 추천", "최신 유행 코트"]);
         }}
       >
         복구
@@ -87,6 +88,8 @@ function App() {
         +
       </button>
 
+      <Modal2 />
+
       {!modal == false ? (
         <Modal
           color={"orange"}
@@ -116,6 +119,32 @@ function Modal(props) {
       </button>
     </div>
   );
+}
+
+class Modal2 extends React.Component {
+  //클래스문법 constructor , super , render
+  constructor() {
+    super();
+    this.state = {
+      //state 사용법
+      name: "Park",
+      age: 27,
+    };
+  }
+  render() {
+    return (
+      <div>
+        안녕 {this.state.name}
+        <button
+          onClick={() => {
+            this.setState({ name: "SeongHyun" }); // 상태변경
+          }}
+        >
+          버튼
+        </button>
+      </div>
+    );
+  }
 }
 
 export default App;
